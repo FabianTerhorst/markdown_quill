@@ -176,6 +176,7 @@ class DeltaToMarkdown extends Converter<Delta, String>
 
   final Map<String, EmbedToMarkdown> _embedHandlers = {
     BlockEmbed.imageType: (embed, out) => out.write('![](${embed.value.data})'),
+    BlockEmbed.videoType: (embed, out) => out.write('![](${embed.value.data})'),
     BlockEmbed.horizontalRuleType: (embed, out) {
       // adds new line after it
       // make --- separated so it doesn't get rendered as header
