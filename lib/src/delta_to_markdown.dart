@@ -257,7 +257,13 @@ class DeltaToMarkdown extends Converter<Delta, String>
 
     final type = embed.value.type;
 
-    _embedHandlers[type]!.call(embed, out);
+    final handler = _embedHandlers[type];
+
+    if (handler != null) {
+      handler.call(embed, out);
+    } else {
+      print("no handler for type:" + type);
+    }
 
     return out;
   }
